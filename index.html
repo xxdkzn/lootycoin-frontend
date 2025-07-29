@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LootyCoin Arena</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script type="module" src="https://unpkg.com/@tonconnect/ui@latest/dist/tonconnect-ui.min.js"></script>
+  <style>
+    body {
+      background: #111;
+      color: white;
+      font-family: sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    button {
+      margin: 10px;
+      padding: 12px 24px;
+      font-size: 18px;
+      border-radius: 8px;
+      background-color: #22c55e;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>LootyCoin Arena</h1>
+  <p>Добро пожаловать, <span id="username">гость</span>!</p>
+
+  <div id="wallet-section"></div>
+
+  <button id="create-battle">Создать бой</button>
+  <button id="join-battle">Присоединиться к бою</button>
+
+  <script>
+    // Telegram Mini App
+    const tg = window.Telegram.WebApp;
+    tg.ready();
+    document.getElementById('username').innerText = tg.initDataUnsafe?.user?.first_name || "Воин";
+
+    // TON Connect
+    const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+      manifestUrl: window.location.origin + "/tonconnect-manifest.json",
+      buttonRootId: "wallet-section"
+    });
+
+    document.getElementById('create-battle').onclick = () => {
+      alert("Создание комнаты будет доступно в следующей версии.");
+    };
+
+    document.getElementById('join-battle').onclick = () => {
+      alert("Поиск боя будет добавлен позже.");
+    };
+  </script>
+</body>
+</html>
